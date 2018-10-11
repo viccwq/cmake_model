@@ -1,5 +1,5 @@
-#ifndef DRAWIMG_H
-#define DRAWIMG_H
+#ifndef _DRAWIMG_H_
+#define _DRAWIMG_H_
 class CDrawImg
 {
 public:
