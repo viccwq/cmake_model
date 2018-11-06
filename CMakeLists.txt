@@ -10,27 +10,27 @@ set(SOLUTION_NAME "VxlModules")
 #   2.check the define of variables
 # ---------------------------------------------
 #check trunk directory
-set(VCA_TRUNK_DIR ${CMAKE_CURRENT_SOURCE_DIR})
-if(EXISTS ${VCA_TRUNK_DIR})
-    message(STATUS "VCA_TRUNK_DIR is definded: ${VCA_TRUNK_DIR}")
+set(VXL_TRUNK_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+if(EXISTS ${VXL_TRUNK_DIR})
+    message(STATUS "VXL_TRUNK_DIR is definded: ${VXL_TRUNK_DIR}")
 else()
-    message(FATAL_ERROR "VCA_TRUNK_DIR is not definded!")
+    message(FATAL_ERROR "VXL_TRUNK_DIR is not definded!")
 endif()
 
 # ---------------------------------------------
 #   3.global setting, set the name of the project
 # ---------------------------------------------
 #platform redefine
-include(${VCA_TRUNK_DIR}/cmake/VxlUtils.cmake)
+include(${VXL_TRUNK_DIR}/cmake/VxlUtils.cmake)
 #create a new project(solution in VS)
 project(${SOLUTION_NAME})
 #set up compile flags
-include(${VCA_TRUNK_DIR}/cmake/VxlUtilsPost.cmake)
+include(${VXL_TRUNK_DIR}/cmake/VxlUtilsPost.cmake)
 
 # ---------------------------------------------
 #   4.set path of public cmake modules
 # ---------------------------------------------
-set(CMAKE_MODULE_PATH ${VCA_TRUNK_DIR}/cmake)
+set(CMAKE_MODULE_PATH ${VXL_TRUNK_DIR}/cmake)
 
 # ---------------------------------------------
 #   5.print basic information

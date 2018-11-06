@@ -18,10 +18,10 @@ set(OBJ_NAME "example")
 ####folder "cmake" for a Project
 #input: _path               input the path of current CMakeLists.txt,
 #                           usually take ${CMAKE_CURRENT_SOURCE_DIR} as an input;
-#output:VCA_PROJECT_DIR     define the absolute path of the project,
+#output:VXL_PROJECT_DIR     define the absolute path of the project,
 #                           it is visible in the project cmakelists.txt;
-#getVcaProjectDir(${CMAKE_CURRENT_SOURCE_DIR})
-set(VCA_PROJECT_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+#getVxlProjectDir(${CMAKE_CURRENT_SOURCE_DIR})
+set(VXL_PROJECT_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 ####print common used variables in project
 #input: _projectName   usually input the name of the target
 showProjectInfo(${OBJ_NAME})
@@ -35,16 +35,16 @@ showProjectInfo(${OBJ_NAME})
 #     default libraries defined in module script.
 # ---------------------------------------------------
 #TODO#set(OPENCV_LIB_LIST_EX core imgproc highgui)
-#TODO#include(${VCA_TRUNK_DIR}/src/cmake/VcaCfgLibOpenCV.cmake)
+#TODO#include(${VXL_TRUNK_DIR}/src/cmake/VxlCfgLibOpenCV.cmake)
 #TODO#include_directories(${OPENCV_INCLUDES})
 #TODO#link_directories(${OPENCV_LIB_DIR})
 
-#TODO#include(${VCA_TRUNK_DIR}/src/cmake/VcaCfgLibOpenCL.cmake)
+#TODO#include(${VXL_TRUNK_DIR}/src/cmake/VxlCfgLibOpenCL.cmake)
 #TODO#include_directories(${OPENCL_INCLUDES})
 #TODO#link_directories(${OPENCL_LIB_DIR})
 
 #TODO#set(XXXX_LIB_LIST_EX aaa bbb)
-#TODO#include(${VCA_TRUNK_DIR}/src/cmake/XXXX.cmake)
+#TODO#include(${VXL_TRUNK_DIR}/src/cmake/XXXX.cmake)
 #TODO#include_directories(${XXXX_INCLUDES})
 #TODO#link_directories(${XXXX_LIB_DIR})
 
@@ -52,35 +52,31 @@ showProjectInfo(${OBJ_NAME})
 #   4.add include directories to current project, it MUST be
 #     modified\added\removed as required
 # ---------------------------------------------------
-#TODO#include_directories(${VCA_TRUNK_DIR}/src/common/interface)
-#TODO#include_directories(${VCA_TRUNK_DIR}/src/common/utils/src)
-#TODO#include_directories(${VCA_TRUNK_DIR}/src/common/exception/src)
-#TODO#include_directories(${VCA_TRUNK_DIR}/src/common/logger/src)
-#TODO#include_directories(${VCA_TRUNK_DIR}/src/wrapper/openCV/src)
-#TODO#include_directories(${VCA_TRUNK_DIR}/src/wrapper/openCL/src)
-#TODO#include_directories(${VCA_PROJECT_DIR}/interface)
+#TODO#include_directories(${VXL_TRUNK_DIR}/src/common/interface)
+#TODO#include_directories(${VXL_TRUNK_DIR}/src/common/utils/src)
+#TODO#include_directories(${VXL_TRUNK_DIR}/src/common/exception/src)
+#TODO#include_directories(${VXL_TRUNK_DIR}/src/common/logger/src)
+#TODO#include_directories(${VXL_TRUNK_DIR}/src/wrapper/openCV/src)
+#TODO#include_directories(${VXL_TRUNK_DIR}/src/wrapper/openCL/src)
+#TODO#include_directories(${VXL_PROJECT_DIR}/interface)
 
 # ---------------------------------------------------
 #   5.add source files to current project
 # ---------------------------------------------------
 file(GLOB_RECURSE SRC_LIST
-    "${VCA_PROJECT_DIR}/src/*.*"
-    "${VCA_PROJECT_DIR}/include/*.*")
+    "${VXL_PROJECT_DIR}/src/*.*"
+    "${VXL_PROJECT_DIR}/include/*.*")
 
 # ---------------------------------------------------
 #   6.add extra source files to current project, it MUST be
 #     modified\added\removed as required
 # ---------------------------------------------------
-#TODO#list(APPEND SRC_LIST ${VCA_TRUNK_DIR}/src/common/utils/src/vcaPortableFuncs.h)
-#TODO#list(APPEND SRC_LIST ${VCA_TRUNK_DIR}/src/common/utils/src/vcaPortableFuncs.cpp)
-#TODO#list(APPEND SRC_LIST ${VCA_TRUNK_DIR}/src/common/exception/src/vcaException.h)
-#TODO#list(APPEND SRC_LIST ${VCA_TRUNK_DIR}/src/common/exception/src/vcaException.cpp)
-#TODO#list(APPEND SRC_LIST ${VCA_TRUNK_DIR}/src/common/logger/src/vcaLog.h)
-#TODO#list(APPEND SRC_LIST ${VCA_TRUNK_DIR}/src/common/logger/src/vcaLog.cpp)
-#TODO#list(APPEND SRC_LIST ${VCA_TRUNK_DIR}/src/wrapper/openCV/src/cvMarket.h)
-#TODO#list(APPEND SRC_LIST ${VCA_TRUNK_DIR}/src/wrapper/openCV/src/cvMarket.cpp)
-#TODO#list(APPEND SRC_LIST ${VCA_TRUNK_DIR}/src/wrapper/openCL/src/oclUtils.hpp)
-#TODO#list(APPEND SRC_LIST ${VCA_TRUNK_DIR}/src/wrapper/openCL/src/oclUtils.cpp)
+#TODO#list(APPEND SRC_LIST ${VXL_TRUNK_DIR}/src/common/exception/src/vxlException.h)
+#TODO#list(APPEND SRC_LIST ${VXL_TRUNK_DIR}/src/common/exception/src/vxlException.cpp)
+#TODO#list(APPEND SRC_LIST ${VXL_TRUNK_DIR}/src/common/logger/src/vxlLog.h)
+#TODO#list(APPEND SRC_LIST ${VXL_TRUNK_DIR}/src/common/logger/src/vxlLog.cpp)
+#TODO#list(APPEND SRC_LIST ${VXL_TRUNK_DIR}/src/wrapper/openCV/src/cvMarket.h)
+#TODO#list(APPEND SRC_LIST ${VXL_TRUNK_DIR}/src/wrapper/openCV/src/cvMarket.cpp)
 
 # ---------------------------------------------------
 #   7.define version source file, it MUST be commented\uncommented
@@ -89,7 +85,7 @@ file(GLOB_RECURSE SRC_LIST
 # ---------------------------------------------------
 #TODO#set(VERSION_RC)
 #TODO#if (WIN32)
-#TODO#    set(VERSION_RC ${VCA_PROJECT_DIR}/rc/${OBJ_NAME}.rc)
+#TODO#    set(VERSION_RC ${VXL_PROJECT_DIR}/rc/${OBJ_NAME}.rc)
 #TODO#endif()
 
 # ---------------------------------------------------
@@ -178,21 +174,21 @@ add_library(${OBJ_NAME} SHARED ${SRC_LIST} ${VERSION_RC})
 #                   otherwise set to NULL
 #TODO##if the output files belong to product package and the suffixes are dll\lib\so\a
 #TODO#setTargetOutputDir(${OBJ_NAME}
-#TODO#    ${VCA_PROJECT_DIR}/build/lib
-#TODO#    ${VCA_PROJECT_DIR}/build/bin
+#TODO#    ${VXL_PROJECT_DIR}/build/lib
+#TODO#    ${VXL_PROJECT_DIR}/build/bin
 #TODO#    NULL)
 
 #TODO##if the output files belong to product package and the suffixes are exe\out
 #TODO#setTargetOutputDir(${OBJ_NAME}
 #TODO#    NULL
 #TODO#    NULL
-#TODO#    ${VCA_PROJECT_DIR}/build/bin)
+#TODO#    ${VXL_PROJECT_DIR}/build/bin)
 
 #TODO##if the output files only belong to test package
 #TODO#setTargetOutputDir(${OBJ_NAME}
 #TODO#    NULL
 #TODO#    NULL
-#TODO#    ${VCA_PROJECT_DIR}/../install)
+#TODO#    ${VXL_PROJECT_DIR}/../install)
 
 # ---------------------------------------------------
 #   12.set preBuild and postBuild event, it MUST be

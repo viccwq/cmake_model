@@ -88,11 +88,11 @@ endif()
 ####folder "cmake" for a Project
 #input: _path               input the path of current CMakeLists.txt, 
 #                           usually take ${CMAKE_CURRENT_SOURCE_DIR} as an input;
-#output:VCA_PROJECT_DIR     define the absolute path of the project, 
+#output:VXL_PROJECT_DIR     define the absolute path of the project, 
 #                           it is visible in the project cmakelists.txt;
-macro(getVcaProjectDir _path)
+macro(getVxlProjectDir _path)
     string(FIND ${_path} "/cmake" index REVERSE)
-    string(SUBSTRING ${_path} "0" ${index} VCA_PROJECT_DIR)
+    string(SUBSTRING ${_path} "0" ${index} VXL_PROJECT_DIR)
     unset(index)
 endmacro()
 
@@ -180,7 +180,7 @@ macro(showSolutionInfo _solutionName)
     message(STATUS ">>>>>> creating solution: ${_solutionName} <<<<<<")
     message(STATUS "============= showSolutionInfo =============")
     message(STATUS "PROJECT_NAME             = " ${PROJECT_NAME})    
-    message(STATUS "VCA_TRUNK_DIR            = " ${VCA_TRUNK_DIR})
+    message(STATUS "VXL_TRUNK_DIR            = " ${VXL_TRUNK_DIR})
     message(STATUS "PROJECT_SOURCE_DIR       = " ${PROJECT_SOURCE_DIR})
     message(STATUS "PROJECT_BINARY_DIR       = " ${PROJECT_BINARY_DIR})
     message(STATUS "CMAKE_CURRENT_SOURCE_DIR = " ${CMAKE_CURRENT_SOURCE_DIR})
@@ -200,8 +200,8 @@ macro(showProjectInfo _projectName)
     message(STATUS ">>>>>> creating project: ${_projectName} <<<<<<")
     message(STATUS "============= showProjectInfo =============")
     message(STATUS "PROJECT_NAME             = " ${PROJECT_NAME})     
-    message(STATUS "VCA_TRUNK_DIR            = " ${VCA_TRUNK_DIR})
-    message(STATUS "VCA_PROJECT_DIR          = " ${VCA_PROJECT_DIR})
+    message(STATUS "VXL_TRUNK_DIR            = " ${VXL_TRUNK_DIR})
+    message(STATUS "VXL_PROJECT_DIR          = " ${VXL_PROJECT_DIR})
     message(STATUS "CMAKE_CURRENT_SOURCE_DIR = " ${CMAKE_CURRENT_SOURCE_DIR})
     message(STATUS "===========================================")
 endmacro()
