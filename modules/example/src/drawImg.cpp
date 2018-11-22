@@ -1,11 +1,31 @@
-#include "drawImg.cpp"
+#include "drawImg.h"
 
-void CDrawImg::draw()
+CDrawImg::CDrawImg()
+{
+
+}
+
+CDrawImg::~CDrawImg()
+{
+
+}
+
+void CDrawImg::DisableLog()
 {
     return;
 }
 
-void setFile(const string fileName)
+VXL_EXECUTION_STATUS CDrawImg::Init(const char* fileName)
 {
-    return;
+    return VXL_SUCCESSED;
+}
+
+VXL_EXECUTION_STATUS CDrawImg::Release()
+{
+    return VXL_SUCCESSED;
+}
+
+VXL_EXECUTION_STATUS CDrawImg::Process()
+{
+    return VXL_SUCCESSED;
 }

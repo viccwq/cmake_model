@@ -1,14 +1,24 @@
 #ifndef _DRAWIMG_H_
 #define _DRAWIMG_H_
-class CDrawImg
+
+#include "IDrawImg.h"
+
+class CDrawImg : public IDrawImg
 {
 public:
-    void draw();
-    void setFile(const string fileName);
+    CDrawImg();
+
+    ~CDrawImg();
+
+    void DisableLog();
+
+    VXL_EXECUTION_STATUS Init(const char* fileName);
+
+    VXL_EXECUTION_STATUS Release();
+
+    VXL_EXECUTION_STATUS Process();
 protected:
 private:
 };
-
-
 
 #endif

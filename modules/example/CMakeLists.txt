@@ -52,13 +52,13 @@ showProjectInfo(${OBJ_NAME})
 #   4.add include directories to current project, it MUST be
 #     modified\added\removed as required
 # ---------------------------------------------------
-#TODO#include_directories(${VXL_TRUNK_DIR}/src/common/interface)
+include_directories(${VXL_TRUNK_DIR}/common/interface)
 #TODO#include_directories(${VXL_TRUNK_DIR}/src/common/utils/src)
 #TODO#include_directories(${VXL_TRUNK_DIR}/src/common/exception/src)
 #TODO#include_directories(${VXL_TRUNK_DIR}/src/common/logger/src)
 #TODO#include_directories(${VXL_TRUNK_DIR}/src/wrapper/openCV/src)
 #TODO#include_directories(${VXL_TRUNK_DIR}/src/wrapper/openCL/src)
-#TODO#include_directories(${VXL_PROJECT_DIR}/interface)
+include_directories(${VXL_PROJECT_DIR}/include)
 
 # ---------------------------------------------------
 #   5.add source files to current project
