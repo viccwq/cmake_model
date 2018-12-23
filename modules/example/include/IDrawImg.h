@@ -3,6 +3,7 @@
 
 #include "vxlMacros.h"
 #include "vxlErrorCode.h"
+#include "vxlSysInc.h"
 
 class IDrawImg
 {

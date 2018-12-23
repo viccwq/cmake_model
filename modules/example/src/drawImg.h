@@ -3,6 +3,8 @@
 
 #include "IDrawImg.h"
 
+using namespace std;
+
 class CDrawImg : public IDrawImg
 {
 public:
@@ -17,7 +19,10 @@ public:
     VXL_EXECUTION_STATUS Release();
 
     VXL_EXECUTION_STATUS Process();
+
 protected:
+    string m_fileName;
+
 private:
 };
 
