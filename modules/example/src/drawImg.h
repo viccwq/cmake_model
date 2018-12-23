@@ -12,7 +12,7 @@ public:
 
     void DisableLog();
 
-    VXL_EXECUTION_STATUS Init(const char* fileName);
+    VXL_EXECUTION_STATUS Init(IN const char* fileName);
 
     VXL_EXECUTION_STATUS Release();
 

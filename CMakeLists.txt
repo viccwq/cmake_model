@@ -41,5 +41,5 @@ showSolutionInfo(${PROJECT_NAME})
 #   6.add subdirectory, it MUST be modified\added\removed as required
 # ---------------------------------------------
 add_subdirectory(modules)
-#add_subdirectory(test)
+add_subdirectory(test)
 

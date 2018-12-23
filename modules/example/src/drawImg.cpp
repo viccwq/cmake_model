@@ -15,7 +15,7 @@ void CDrawImg::DisableLog()
     return;
 }
 
-VXL_EXECUTION_STATUS CDrawImg::Init(const char* fileName)
+VXL_EXECUTION_STATUS CDrawImg::Init(IN const char* fileName)
 {
     return VXL_SUCCESSED;
 }
