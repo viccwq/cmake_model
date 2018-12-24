@@ -173,22 +173,22 @@ add_library(${OBJ_NAME} SHARED ${SRC_LIST} ${VERSION_RC})
 #                   it should be set correctly when generate executable,
 #                   otherwise set to NULL
 #TODO##if the output files belong to product package and the suffixes are dll\lib\so\a
-#TODO#setTargetOutputDir(${OBJ_NAME}
-#TODO#    ${VXL_PROJECT_DIR}/build/lib
-#TODO#    ${VXL_PROJECT_DIR}/build/bin
-#TODO#    NULL)
+setTargetOutputDir(${OBJ_NAME}
+    ${VXL_TRUNK_DIR}/build/lib
+    ${VXL_TRUNK_DIR}/build/bin
+    NULL)
 
 #TODO##if the output files belong to product package and the suffixes are exe\out
 #TODO#setTargetOutputDir(${OBJ_NAME}
 #TODO#    NULL
 #TODO#    NULL
-#TODO#    ${VXL_PROJECT_DIR}/build/bin)
+#TODO#    ${VXL_TRUNK_DIR}/build/bin)
 
 #TODO##if the output files only belong to test package
 #TODO#setTargetOutputDir(${OBJ_NAME}
 #TODO#    NULL
 #TODO#    NULL
-#TODO#    ${VXL_PROJECT_DIR}/../install)
+#TODO#    ${VXL_TRUNK_DIR}/build/install)
 
 # ---------------------------------------------------
 #   12.set preBuild and postBuild event, it MUST be
