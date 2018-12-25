@@ -18,3 +18,5 @@ if exist %curpath%install\x86 (
 	if exist %curpath%lib\x64 (
 		xcopy /y /c /r "%curpath%lib\x86\*.*" "%curpath%install\x86\")
 )
+
+pause
