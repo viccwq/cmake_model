@@ -4,9 +4,9 @@
 #include <string>
 #include <mutex>
 
-#include "vcaLogAux.h"
-#include "vcaMutex.h"
-#include "vcaPortableFuncs.h"
+#include "vxlLogAux.h"
+#include "vxlMutex.h"
+#include "vxlPortable.h"
 
 #define LogTrace(fmt, ...)   if((Logger::m_logLevel <= VCA_LOG_TRACE) && Logger::m_bEnableFileLog){Logger::Instance()->Log(VCA_LOG_TRACE, fmt, ##__VA_ARGS__);}
 #define LogInfo(fmt, ...)    if((Logger::m_logLevel <= VCA_LOG_INFO) && Logger::m_bEnableFileLog){Logger::Instance()->Log(VCA_LOG_INFO, fmt, ##__VA_ARGS__);}
@@ -66,4 +66,4 @@ public:
     static VCA_LOG_LEVEL m_logLevel;
 };
 
-#endif//__VCALOG_H__
+#endif
