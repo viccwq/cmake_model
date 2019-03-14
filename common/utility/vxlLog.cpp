@@ -8,7 +8,7 @@
 #else if defined __linux__
 #define LOG_FILE_DIR  "/DebugLog"
 #endif
-#define LOG_FILE_NAME "Codyy_VCA"
+#define LOG_FILE_NAME "Codyy_VXL"
 #define LOG_FILE_EXT  ".txt"
 
 #define LOG_DEBUG_PRNT        0 // default 0, to control whether to print log debug info or not
@@ -16,7 +16,7 @@
 #define MAX_STR_SIZE_INLINE   (1024)
 
 FILE*         Logger::m_hLogFile  = NULL;
-VCA_LOG_LEVEL Logger::m_logLevel  = VCA_LOG_LEVEL_DEFAULT;
+VXL_LOG_LEVEL Logger::m_logLevel  = VXL_LOG_LEVEL_DEFAULT;
 
 std::string Logger::m_strFileDir  = LOG_FILE_DIR;
 std::string Logger::m_strFileName = LOG_FILE_NAME;
@@ -29,7 +29,7 @@ int  Logger::m_logFileCount       = 0;
 std::mutex   Logger::m_mutex;
 static Logger* m_pLogger = NULL;
 
-const char* m_logLevelStr[VCA_LOG_LEVEL_COUNT] = {
+const char* m_logLevelStr[VXL_LOG_LEVEL_COUNT] = {
     "TRACE",
     "INFO",
     "WARNING",
@@ -60,7 +60,7 @@ Logger* Logger::Instance()
 #if LOG_DEBUG_PRNT
     printf("Logger::Instance\n");
 #endif
-    CVcaLockGuard lock(Logger::m_mutex);
+    CVxlLockGuard lock(Logger::m_mutex);
     if (m_pLogger == NULL)
     {
         m_pLogger = new(std::nothrow) Logger();
@@ -76,33 +76,33 @@ void Logger::SetFileDirectory(
     IN const std::string &strFileDir,
     IN bool bDeleteOldDir)
 {
-    CVcaLockGuard lock(Logger::m_mutex);
+    CVxlLockGuard lock(Logger::m_mutex);
     Logger::m_strFileDir = strFileDir;
     Logger::m_bSetDir = true;
 }
 
 void Logger::SetFileName(const std::string& strFileName)
 {
-    CVcaLockGuard lock(m_mutex);
+    CVxlLockGuard lock(m_mutex);
     m_strFileName = strFileName;
     Logger::MakeLogFilePath();
 }
 
-void Logger::SetLevel(IN VCA_LOG_LEVEL logLevel)
+void Logger::SetLevel(IN VXL_LOG_LEVEL logLevel)
 {
-    CVcaLockGuard lock(Logger::m_mutex);
+    CVxlLockGuard lock(Logger::m_mutex);
     Logger::m_logLevel = logLevel;
 }
 
 void Logger::EnableFileLog(IN bool bEnableFileLog)
 {
-    CVcaLockGuard lock(Logger::m_mutex);
+    CVxlLockGuard lock(Logger::m_mutex);
     Logger::m_bEnableFileLog = bEnableFileLog;
 }
 
-void Logger::Log(IN VCA_LOG_LEVEL logLevel, IN const char* const format, ...)
+void Logger::Log(IN VXL_LOG_LEVEL logLevel, IN const char* const format, ...)
 {
-    CVcaLockGuard lock(Logger::m_mutex);
+    CVxlLockGuard lock(Logger::m_mutex);
 
     int ret = 0;
 
@@ -193,7 +193,7 @@ bool Logger::Initialise()
         {
 #ifdef __linux__
             std::string userPth;
-            VcaGetUserPath(userPth);
+            VxlGetUserPath(userPth);
             m_strFileDir = userPth + m_strFileDir;
 #if LOG_DEBUG_PRNT
             printf("m_strFileDir=%s\n", m_strFileDir.c_str());
@@ -240,7 +240,7 @@ void Logger::Dispose()
 
 bool Logger::CreateFileDirectory(const std::string& strFileDir, bool bDeleteOldDir)
 {
-    VCA_EXECUTION_STATUS status = VCA_FAILED;
+    VXL_EXECUTION_STATUS status = VXL_FAILED;
 
     std::string strDirTemp = strFileDir;
     if (strDirTemp.substr(strDirTemp.length() - 1, 1) == "/")
@@ -249,7 +249,7 @@ bool Logger::CreateFileDirectory(const std::string& strFileDir, bool bDeleteOldD
     }
 
     status = CreateDir(strDirTemp);
-    if (VCA_SUCCESSED != status)
+    if (VXL_SUCCESSED != status)
     {
 #if LOG_DEBUG_PRNT
         printf("!CreateLogDirectory(strDirTemp) -> false\n");
@@ -261,7 +261,7 @@ bool Logger::CreateFileDirectory(const std::string& strFileDir, bool bDeleteOldD
     {
         Dispose();
         status = DeleteDir(Logger::m_strFileDir);
-        if (VCA_SUCCESSED != status)
+        if (VXL_SUCCESSED != status)
         {
 #if LOG_DEBUG_PRNT
             printf("DeleteDir(m_strFileDir=%s) failed! status=%d\n",
@@ -279,7 +279,7 @@ bool Logger::CreateFileDirectory(const std::string& strFileDir, bool bDeleteOldD
 
 void Logger::MakeLogFilePath()
 {
-    char buf[VCA_PRNT_BUFF_LEN_128] = { 0 };
+    char buf[VXL_PRNT_BUFF_LEN_128] = { 0 };
 
     Logger::Dispose();
     Logger::m_strFilePath  = Logger::m_strFileDir + "/";

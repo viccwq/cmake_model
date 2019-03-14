@@ -25,9 +25,9 @@ using namespace std;
 /*!
     \strDir : directory to be created, which must be in UNIX style and can only accept alphabets, digits, dots or underlines
 */
-VCA_EXECUTION_STATUS CreateDir(IN const string &strDir)
+VXL_EXECUTION_STATUS CreateDir(IN const string &strDir)
 {
-    VCA_EXECUTION_STATUS status = VCA_FAILED;
+    VXL_EXECUTION_STATUS status = VXL_FAILED;
 
 #ifdef _WIN32
     char *pChar = NULL;
@@ -35,7 +35,7 @@ VCA_EXECUTION_STATUS CreateDir(IN const string &strDir)
     bool flg = regex_match(strDir.c_str(), regex(STR_REGEX_DIR));
     if (!flg || strDir.size() >= MAX_PATH)
     {
-        status = VCA_INVALID_INPUT_ARGS;
+        status = VXL_INVALID_INPUT_ARGS;
         goto finish;
     }
 
@@ -44,7 +44,7 @@ VCA_EXECUTION_STATUS CreateDir(IN const string &strDir)
     pChar = strchr(strDirTemp, '/');
     if (pChar == NULL)
     {
-        status = VCA_FAILED_UNKNOWN;
+        status = VXL_FAILED_UNKNOWN;
         goto finish;
     }
 
@@ -71,7 +71,7 @@ VCA_EXECUTION_STATUS CreateDir(IN const string &strDir)
     bool flg = regex_match(strDir.c_str(), regex(STR_REGEX_DIR));
     if (!flg || strDir.size() >= MAX_PATH)
     {
-        status = VCA_INVALID_INPUT_ARGS;
+        status = VXL_INVALID_INPUT_ARGS;
         goto finish;
     }
 
@@ -88,13 +88,13 @@ VCA_EXECUTION_STATUS CreateDir(IN const string &strDir)
 
         if ((iRes = ::mkdir(strDirTmp2.c_str(), mode)) && errno != EEXIST)
         {
-            status = VCA_INVALID_INPUT_ARGS;
+            status = VXL_INVALID_INPUT_ARGS;
             goto finish;
         }
     }
 #endif
 
-    status = VCA_SUCCESSED;
+    status = VXL_SUCCESSED;
 
 finish:
     return status;
@@ -104,9 +104,9 @@ finish:
 /*!
     \strDir : directory to be deleted, which must be in UNIX style and can only accept alphabets, digits, dots or underlines
 */
-VCA_EXECUTION_STATUS DeleteDir(IN const string &strDir)
+VXL_EXECUTION_STATUS DeleteDir(IN const string &strDir)
 {
-    VCA_EXECUTION_STATUS status = VCA_FAILED;
+    VXL_EXECUTION_STATUS status = VXL_FAILED;
 
 #ifdef _WIN32
     char strPathTemp[MAX_PATH+1] = { 0 };
@@ -115,7 +115,7 @@ VCA_EXECUTION_STATUS DeleteDir(IN const string &strDir)
     bool flg = regex_match(strDir.c_str(), regex(STR_REGEX_DIR));
     if (!flg || strDir.size() >= MAX_PATH)
     {
-        status = VCA_INVALID_INPUT_ARGS;
+        status = VXL_INVALID_INPUT_ARGS;
         goto finish;
     }
 
@@ -134,25 +134,25 @@ VCA_EXECUTION_STATUS DeleteDir(IN const string &strDir)
     // 3. the '/' can be replaced by '\\'
     if (0 != SHFileOperationA(&fileOp))
     {
-        status = VCA_FAILED_UNKNOWN;
+        status = VXL_FAILED_UNKNOWN;
         goto finish;
     }
 #else if defined __linux__
     bool flg = regex_match(strDir.c_str(), regex(STR_REGEX_DIR));
     if (!flg || strDir.size() >= MAX_PATH)
     {
-        status = VCA_INVALID_INPUT_ARGS;
+        status = VXL_INVALID_INPUT_ARGS;
         goto finish;
     }
 
     if (0 != remove(strDir.c_str()))
     {
-        status = VCA_FAILED_UNKNOWN;
+        status = VXL_FAILED_UNKNOWN;
         goto finish;
     }
 #endif
 
-    status = VCA_SUCCESSED;
+    status = VXL_SUCCESSED;
 
 finish:
     return status;
@@ -176,9 +176,9 @@ void VcaGetUserPath(OUT string &userPath)
 /*!
     \path : output path of current module whose style is UNIX style
 */
-VCA_EXECUTION_STATUS GetCurPath(OUT string &path)
+VXL_EXECUTION_STATUS GetCurPath(OUT string &path)
 {
-    VCA_EXECUTION_STATUS status = VCA_FAILED;
+    VXL_EXECUTION_STATUS status = VXL_FAILED;
 
 #ifdef _WIN32
     char pathTmp[MAX_PATH]   = { 0 };
@@ -189,7 +189,7 @@ VCA_EXECUTION_STATUS GetCurPath(OUT string &path)
     DWORD len = GetModuleFileNameA(NULL, szFull, sizeof(szFull) / sizeof(char));
     if (len <= 0)
     {
-        status = VCA_FAILED_UNKNOWN;
+        status = VXL_FAILED_UNKNOWN;
         goto finish;
     }
     _splitpath(szFull, szDrive, szDir, NULL, NULL);
@@ -206,7 +206,7 @@ VCA_EXECUTION_STATUS GetCurPath(OUT string &path)
     int cnt = readlink("/proc/self/exe", pathTmp, MAX_PATH);
     if(cnt < 0|| cnt >= MAX_PATH)
     {
-        status = VCA_FAILED_UNKNOWN;
+        status = VXL_FAILED_UNKNOWN;
         goto finish;
     }
 
@@ -223,7 +223,7 @@ VCA_EXECUTION_STATUS GetCurPath(OUT string &path)
     path = path.substr(0, path.rfind('/'));
 #endif
 
-    status = VCA_SUCCESSED;
+    status = VXL_SUCCESSED;
 
 finish:
     return status;
@@ -234,24 +234,24 @@ finish:
     \strCfgPath : input relative path of the config file
     \strPath    : output absolute path of the config file
 */
-VCA_EXECUTION_STATUS GetConfigFilePath(
+VXL_EXECUTION_STATUS GetConfigFilePath(
     IN  const char* const strCfgPath,
     OUT string            &strPath)
 {
-    VCA_EXECUTION_STATUS status = VCA_FAILED;
+    VXL_EXECUTION_STATUS status = VXL_FAILED;
 
     string szPath;
     status = GetCurPath(szPath);
-    if (VCA_SUCCESSED != status)
+    if (VXL_SUCCESSED != status)
     {
-        status = VCA_FAILED_UNKNOWN;
+        status = VXL_FAILED_UNKNOWN;
         goto finish;
     }
 
     strPath = szPath + '/';
     strPath += strCfgPath;
 
-    status = VCA_SUCCESSED;
+    status = VXL_SUCCESSED;
 
 finish:
     return status;
@@ -264,19 +264,19 @@ finish:
     \fileName : output name of the file
     \fileExt  : output suffix of the file
 */
-VCA_EXECUTION_STATUS SplitFilePath(
+VXL_EXECUTION_STATUS SplitFilePath(
     IN  const string &filePath,
     OUT       string &fileDir,
     OUT       string &fileName,
     OUT       string &fileExt)
 {
-    VCA_EXECUTION_STATUS status = VCA_FAILED;
+    VXL_EXECUTION_STATUS status = VXL_FAILED;
     size_t posDot, posSlash;
 
     bool flg = regex_match(filePath.c_str(), regex(STR_REGEX_PATH));
     if (!flg || filePath.size() >= MAX_PATH)
     {
-        status = VCA_INVALID_INPUT_ARGS;
+        status = VXL_INVALID_INPUT_ARGS;
         goto finish;
     }
 
@@ -285,7 +285,7 @@ VCA_EXECUTION_STATUS SplitFilePath(
     posSlash = filePath.find_last_of('/');
     if (posDot == string::npos || posSlash == string::npos || posDot <= posSlash)
     {
-        status = VCA_INVALID_INPUT_ARGS;
+        status = VXL_INVALID_INPUT_ARGS;
         goto finish;
     }
 
@@ -297,7 +297,7 @@ VCA_EXECUTION_STATUS SplitFilePath(
     posSlash = filePath.find_last_of('/');
     if (posSlash == string::npos) // if path contains no slash, it must be error
     {
-        status = VCA_INVALID_INPUT_ARGS;
+        status = VXL_INVALID_INPUT_ARGS;
         goto finish;
     }
 
@@ -317,7 +317,7 @@ VCA_EXECUTION_STATUS SplitFilePath(
         }
         else
         {
-            status = VCA_INVALID_INPUT_ARGS;
+            status = VXL_INVALID_INPUT_ARGS;
             goto finish;
         }
     }
@@ -329,7 +329,7 @@ VCA_EXECUTION_STATUS SplitFilePath(
     }
 #endif
 
-    status = VCA_SUCCESSED;
+    status = VXL_SUCCESSED;
 
 finish:
     return status;

@@ -5,9 +5,9 @@
 #include <stdexcept>
 #include <vector>
 
-#include "vcaCommonMacros.h"
-#include "vcaErrorCode.h"
-#include "vcaPortableTypes.h"
+#include "vxlCommonMacros.h"
+#include "vxlErrorCode.h"
+#include "vxlPortableTypes.h"
 
 #ifdef _WIN32
 #include <windows.h>
@@ -35,13 +35,13 @@
 /*!
     \strDir : directory to be created, which must be in UNIX style and can only accept alphabets, digits, dots or underlines
 */
-VCA_EXECUTION_STATUS CreateDir(IN const std::string &strDir);
+VXL_EXECUTION_STATUS CreateDir(IN const std::string &strDir);
 
 //! delete a directory
 /*!
     \strDir : directory to be deleted, which must be in UNIX style and can only accept alphabets, digits, dots or underlines
 */
-VCA_EXECUTION_STATUS DeleteDir(IN const std::string &strDir);
+VXL_EXECUTION_STATUS DeleteDir(IN const std::string &strDir);
 
 #ifdef __linux__
 //! get current user path (only in linux defined)
@@ -55,14 +55,14 @@ void VcaGetUserPath(OUT std::string &userPath);
 /*!
     \path : the path of current module
 */
-VCA_EXECUTION_STATUS GetCurPath(OUT std::string &path);
+VXL_EXECUTION_STATUS GetCurPath(OUT std::string &path);
 
 //! get the config file absolute path
 /*!
     \strCfgPath : input relative path of the config file
     \strPath    : output absolute path of the config file
 */
-VCA_EXECUTION_STATUS GetConfigFilePath(
+VXL_EXECUTION_STATUS GetConfigFilePath(
     IN  const char* const strCfgPath,
     OUT std::string       &strPath);
 
@@ -73,7 +73,7 @@ VCA_EXECUTION_STATUS GetConfigFilePath(
     \fileName : output name of the file
     \fileExt  : output suffix of the file
 */
-VCA_EXECUTION_STATUS SplitFilePath(
+VXL_EXECUTION_STATUS SplitFilePath(
     IN  const std::string &filePath,
     OUT       std::string &fileDir,
     OUT       std::string &fileName,
@@ -99,4 +99,4 @@ void RemoveLastInvalidCharacters(IN OUT std::string &s);
 */
 std::vector<std::string> ReadFileIntoString(IN const char* const filePath);
 
-#endif //__VCAPORTABLEFUNCS_H__
+#endif //__VXLPORTABLEFUNCS_H__
