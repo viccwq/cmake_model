@@ -2,13 +2,15 @@
 #include <stdarg.h>
 
 #include "vxlLog.h"
+#include "vxlMutex.h"
+#include "vxlPortable.h"
 
 #ifdef _WIN32
 #define LOG_FILE_DIR  "C:/DebugLog"
 #else if defined __linux__
 #define LOG_FILE_DIR  "/DebugLog"
 #endif
-#define LOG_FILE_NAME "Codyy_VXL"
+#define LOG_FILE_NAME "VIC_VXL"
 #define LOG_FILE_EXT  ".txt"
 
 #define LOG_DEBUG_PRNT        0 // default 0, to control whether to print log debug info or not
@@ -279,7 +281,7 @@ bool Logger::CreateFileDirectory(const std::string& strFileDir, bool bDeleteOldD
 
 void Logger::MakeLogFilePath()
 {
-    char buf[VXL_PRNT_BUFF_LEN_128] = { 0 };
+    char buf[128] = { 0 };
 
     Logger::Dispose();
     Logger::m_strFilePath  = Logger::m_strFileDir + "/";

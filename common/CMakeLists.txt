@@ -1,3 +1,2 @@
 #this file CMakeList.txt is used to include the desired projects
-add_subdirectory(exampleTest)
-add_subdirectory(logTest)
+add_subdirectory(log)

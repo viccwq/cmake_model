@@ -5,8 +5,17 @@
 #include <mutex>
 
 #include "vxlLogAux.h"
-#include "vxlMutex.h"
-#include "vxlPortable.h"
+#include "vxlMacros.h"
+
+#ifdef _WIN32
+#ifdef LOG_EXPORTS
+#define INTERFACE __declspec(dllexport)
+#else
+#define INTERFACE __declspec(dllimport)
+#endif
+#else if defined __linux__
+#define INTERFACE_CLASS __attribute__ ((visibility("default")))
+#endif
 
 #define LogTrace(fmt, ...)   if((Logger::m_logLevel <= VXL_LOG_TRACE) && Logger::m_bEnableFileLog){Logger::Instance()->Log(VXL_LOG_TRACE, fmt, ##__VA_ARGS__);}
 #define LogInfo(fmt, ...)    if((Logger::m_logLevel <= VXL_LOG_INFO) && Logger::m_bEnableFileLog){Logger::Instance()->Log(VXL_LOG_INFO, fmt, ##__VA_ARGS__);}
@@ -27,7 +36,7 @@
 #define VXLDisableLog()                                          \
     EnableLogFile(false);
 
-class Logger
+class INTERFACE Logger
 {
 private:
     Logger();

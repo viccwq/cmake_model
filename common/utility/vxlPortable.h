@@ -5,9 +5,8 @@
 #include <stdexcept>
 #include <vector>
 
-#include "vxlCommonMacros.h"
+#include "vxlMacros.h"
 #include "vxlErrorCode.h"
-#include "vxlPortableTypes.h"
 
 #ifdef _WIN32
 #include <windows.h>
