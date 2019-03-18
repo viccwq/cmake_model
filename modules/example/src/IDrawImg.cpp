@@ -11,6 +11,6 @@ INTERFACE_CLASS IDrawImg* CreateDrawImg()
 INTERFACE_CLASS void DeleteDrawImg(IN OUT IDrawImg** const pIDrawImg)
 {
     CDrawImg *pCDrawImg = dynamic_cast<CDrawImg*>(*pIDrawImg);
-    delete(&pCDrawImg);
+    delete(pCDrawImg);
     *pIDrawImg = NULL;
 }
