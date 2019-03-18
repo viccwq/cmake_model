@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.5)
 #   1.define library/execution target name, it MUST be
 #     modified as required
 # ---------------------------------------------------
-set(OBJ_NAME "logTest")
+set(OBJ_NAME "exampleLog02")
 #TODO##add some definitions only to this project
 #TODO#ADD_DEFINITIONS(-DXXX)
 #TODO##remove some definitions only to this project
@@ -53,14 +53,12 @@ showProjectInfo(${OBJ_NAME})
 #     modified\added\removed as required
 # ---------------------------------------------------
 include_directories(${VXL_TRUNK_DIR}/common/interface)
-include_directories(${VXL_TRUNK_DIR}/common/utility)
 include_directories(${VXL_TRUNK_DIR}/common/log/include)
 #TODO#include_directories(${VXL_TRUNK_DIR}/src/common/exception/src)
 #TODO#include_directories(${VXL_TRUNK_DIR}/src/common/logger/src)
 #TODO#include_directories(${VXL_TRUNK_DIR}/src/wrapper/openCV/src)
 #TODO#include_directories(${VXL_TRUNK_DIR}/src/wrapper/openCL/src)
-include_directories(${VXL_TRUNK_DIR}/modules/examplelog01/include)
-include_directories(${VXL_TRUNK_DIR}/modules/examplelog02/include)
+include_directories(${VXL_PROJECT_DIR}/include)
 
 # ---------------------------------------------------
 #   5.add source files to current project
@@ -101,14 +99,14 @@ file(GLOB_RECURSE SRC_LIST
 #     all of the under methods.
 # ---------------------------------------------------
 #TODO##add the pre-define macro before creating shared(dynamic) library
-#TODO##addProjDllExport(${OBJ_NAME})
-#TODO##add_library(${OBJ_NAME} SHARED ${SRC_LIST} ${VERSION_RC})
+addProjDllExport(${OBJ_NAME})
+add_library(${OBJ_NAME} SHARED ${SRC_LIST} ${VERSION_RC})
 
 #TODO##create static library
 #TODO#add_library(${OBJ_NAME} STATIC ${SRC_LIST} ${VERSION_RC})
 
 #TODO##create executable object
-add_executable(${OBJ_NAME} ${SRC_LIST})
+#TODO#add_executable(${OBJ_NAME} ${SRC_LIST})
 
 # ---------------------------------------------------
 #   9.link 3rd party library to target, it MUST be 
@@ -150,14 +148,14 @@ add_dependencies(${OBJ_NAME} "log")
 target_link_libraries(${OBJ_NAME} "log")
 
 #TODO##build the dependence relationship
-add_dependencies(${OBJ_NAME} "exampleLog01")
+#TODO#add_dependencies(${OBJ_NAME} "moduleXXXX")
 #TODO##link the customized library to target
-target_link_libraries(${OBJ_NAME} "exampleLog01")
+#TODO#target_link_libraries(${OBJ_NAME} "moduleXXXX")
 
 #TODO##build the dependence relationship
-add_dependencies(${OBJ_NAME} "exampleLog02")
+#TODO#add_dependencies(${OBJ_NAME} "moduleYYYY")
 #TODO##link the customized library to target
-target_link_libraries(${OBJ_NAME} "exampleLog02")
+#TODO#target_link_libraries(${OBJ_NAME} "moduleYYYY")
 
 # ---------------------------------------------------
 #   11.set the target output direction, it MUST be
@@ -175,10 +173,10 @@ target_link_libraries(${OBJ_NAME} "exampleLog02")
 #                   it should be set correctly when generate executable,
 #                   otherwise set to NULL
 #TODO##if the output files belong to product package and the suffixes are dll\lib\so\a
-#TODO#setTargetOutputDir(${OBJ_NAME}
-#TODO#    ${VXL_TRUNK_DIR}/build/lib
-#TODO#    ${VXL_TRUNK_DIR}/build/bin
-#TODO#    NULL)
+setTargetOutputDir(${OBJ_NAME}
+    ${VXL_TRUNK_DIR}/build/lib
+    ${VXL_TRUNK_DIR}/build/bin
+    NULL)
 
 #TODO##if the output files belong to product package and the suffixes are exe\out
 #TODO#setTargetOutputDir(${OBJ_NAME}
@@ -187,10 +185,10 @@ target_link_libraries(${OBJ_NAME} "exampleLog02")
 #TODO#    ${VXL_TRUNK_DIR}/build/bin)
 
 #TODO##if the output files only belong to test package
-setTargetOutputDir(${OBJ_NAME}
-    NULL
-    NULL
-    ${VXL_TRUNK_DIR}/build/install)
+#TODO#setTargetOutputDir(${OBJ_NAME}
+#TODO#    NULL
+#TODO#    NULL
+#TODO#    ${VXL_TRUNK_DIR}/build/install)
 
 # ---------------------------------------------------
 #   12.set preBuild and postBuild event, it MUST be
