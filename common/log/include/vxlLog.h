@@ -9,9 +9,9 @@
 
 #ifdef _WIN32
 #ifdef LOG_EXPORTS
-#define INTERFACE __declspec(dllexport)
+#define INTERFACE_DLL __declspec(dllexport)
 #else
-#define INTERFACE __declspec(dllimport)
+#define INTERFACE_DLL __declspec(dllimport)
 #endif
 #else if defined __linux__
 #define INTERFACE_CLASS __attribute__ ((visibility("default")))
@@ -36,7 +36,14 @@
 #define VXLDisableLog()                                          \
     EnableLogFile(false);
 
-class INTERFACE Logger
+#ifdef _WIN32
+#pragma warning(push)
+#pragma warning(disable:4251)
+#else if defined __linux__
+//
+#endif
+//your declarations that cause 4251
+class INTERFACE_DLL Logger
 {
 private:
     Logger();
@@ -74,5 +81,10 @@ public:
     static bool          m_bEnableFileLog;
     static VXL_LOG_LEVEL m_logLevel;
 };
+#ifdef _WIN32
+#pragma warning(pop)
+#else if defined __linux__
+//
+#endif
 
 #endif
