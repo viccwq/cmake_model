@@ -72,7 +72,7 @@ int FunTest(int threadIdx)
 
 #ifdef _WIN32
     SetLogFileDirectory("C:/DebugLog/Director");
-#else if defined __linux__
+#elif defined __linux__
     SetLogFileDirectory("./DebugLog/Director");
 #endif
     SetLogFileName("testLog");

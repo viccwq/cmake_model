@@ -10,7 +10,7 @@
 
 #ifdef _WIN32
 #include <windows.h>
-#else if defined __linux__
+#elif defined __linux__
 #include <stdio.h>
 #include <string.h>
 #include <sys/time.h>
@@ -23,7 +23,7 @@
 #endif
 
 #ifdef _WIN32
-#else if defined __linux__
+#elif defined __linux__
 #define _vsnprintf_s     vsnprintf
 #define Sleep(x)         usleep((x)*1000)
 #define printf_s         printf

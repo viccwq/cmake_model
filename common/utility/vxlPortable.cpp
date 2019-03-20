@@ -15,7 +15,7 @@ using namespace std;
 #ifdef _WIN32
 #define STR_REGEX_DIR    "[a-zA-Z]:(/([0-9a-zA-Z_.]+))*"
 #define STR_REGEX_EXT    ".([0-9a-zA-Z]+)"
-#else if defined __linux__
+#elif defined __linux__
 #define STR_REGEX_DIR    ".?(/([0-9a-zA-Z_.]+))*"
 #define STR_REGEX_EXT    "(.([0-9a-zA-Z]+))?"
 #endif
@@ -62,7 +62,7 @@ VXL_EXECUTION_STATUS CreateDir(IN const string &strDir)
             memcpy(strDirTemp, strDir.c_str(), strDir.size());
         }
     } while (pChar != NULL);
-#else if defined __linux__
+#elif defined __linux__
     string strDirTmp;
     std::string strDirTmp2("");
     int iPre = 0, iPos = 0, iRes = 0;
@@ -137,7 +137,7 @@ VXL_EXECUTION_STATUS DeleteDir(IN const string &strDir)
         status = VXL_FAILED_UNKNOWN;
         goto finish;
     }
-#else if defined __linux__
+#elif defined __linux__
     bool flg = regex_match(strDir.c_str(), regex(STR_REGEX_DIR));
     if (!flg || strDir.size() >= MAX_PATH)
     {
@@ -201,7 +201,7 @@ VXL_EXECUTION_STATUS GetCurPath(OUT string &path)
     {
         if ('\\' == *it) *it = '/';
     }
-#else if defined __linux__
+#elif defined __linux__
     char pathTmp[MAX_PATH];
     int cnt = readlink("/proc/self/exe", pathTmp, MAX_PATH);
     if(cnt < 0|| cnt >= MAX_PATH)
@@ -292,7 +292,7 @@ VXL_EXECUTION_STATUS SplitFilePath(
     fileDir  = filePath.substr(0, posSlash);
     fileName = filePath.substr(posSlash + 1, posDot - posSlash - 1);
     fileExt  = filePath.substr(posDot + 1);
-#else if defined __linux__
+#elif defined __linux__
     posDot   = filePath.find_last_of('.');
     posSlash = filePath.find_last_of('/');
     if (posSlash == string::npos) // if path contains no slash, it must be error

@@ -59,8 +59,8 @@ include_directories(${VXL_TRUNK_DIR}/common/log/include)
 #TODO#include_directories(${VXL_TRUNK_DIR}/src/common/logger/src)
 #TODO#include_directories(${VXL_TRUNK_DIR}/src/wrapper/openCV/src)
 #TODO#include_directories(${VXL_TRUNK_DIR}/src/wrapper/openCL/src)
-include_directories(${VXL_TRUNK_DIR}/modules/examplelog01/include)
-include_directories(${VXL_TRUNK_DIR}/modules/examplelog02/include)
+include_directories(${VXL_TRUNK_DIR}/modules/exampleLog01/include)
+include_directories(${VXL_TRUNK_DIR}/modules/exampleLog02/include)
 
 # ---------------------------------------------------
 #   5.add source files to current project

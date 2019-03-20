@@ -14,7 +14,7 @@ void CWriteLog01::EnableLog(IN VXL_LOG_LEVEL logLevel, IN const char* const logD
 {
 #ifdef _WIN32
     SetLogFileDirectory("C:/DebugLog/Director");
-#else if defined __linux__
+#elif defined __linux__
     SetLogFileDirectory("./DebugLog/Director");
 #endif
     //SetLogFileName(logDir);

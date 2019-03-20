@@ -13,7 +13,7 @@
 #else
 #define INTERFACE_DLL __declspec(dllimport)
 #endif
-#else if defined __linux__
+#elif defined __linux__
 #define INTERFACE_CLASS __attribute__ ((visibility("default")))
 #endif
 
@@ -39,7 +39,7 @@
 #ifdef _WIN32
 #pragma warning(push)
 #pragma warning(disable:4251)
-#else if defined __linux__
+#elif defined __linux__
 //
 #endif
 //your declarations that cause 4251
@@ -83,7 +83,7 @@ public:
 };
 #ifdef _WIN32
 #pragma warning(pop)
-#else if defined __linux__
+#elif defined __linux__
 //
 #endif
 

@@ -7,7 +7,7 @@
 
 #ifdef _WIN32
 #define LOG_FILE_DIR  "C:/DebugLog"
-#else if defined __linux__
+#elif defined __linux__
 #define LOG_FILE_DIR  "/DebugLog"
 #endif
 #define LOG_FILE_NAME "VIC_VXL"
@@ -140,7 +140,7 @@ void Logger::Log(IN VXL_LOG_LEVEL logLevel, IN const char* const format, ...)
     ret = fprintf(m_hLogFile, "[%04u-%02u-%02u %02u:%02u:%02u:%03u] [%s] %s",
         st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute, st.wSecond, st.wMilliseconds,
         m_logLevelStr[logLevel], szBuffer);
-#else if defined __linux__
+#elif defined __linux__
     time_t st;
     struct tm *p = NULL;
     time(&st);
@@ -292,7 +292,7 @@ void Logger::MakeLogFilePath()
     GetLocalTime(&st);
     _snprintf_s(buf, sizeof(buf), "_%4d%02d%02d%02d%02d%02d_%d" LOG_FILE_EXT,
         st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute, st.wSecond, Logger::m_logFileCount);
-#else if defined __linux__
+#elif defined __linux__
     time_t st(0);
     struct tm *p = NULL;
     time(&st);

@@ -46,7 +46,7 @@ public:
 #else
 #define INTERFACE_CLASS extern "C" __declspec(dllimport)
 #endif
-#else if defined __linux__
+#elif defined __linux__
 #define INTERFACE_CLASS __attribute__ ((visibility("default")))
 #endif
 

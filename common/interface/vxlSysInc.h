@@ -5,7 +5,7 @@
 #include <Windows.h>
 #include <iostream>
 
-#else if defined __linux__
+#elif defined __linux__
 #include <stdio.h>
 #endif
 
