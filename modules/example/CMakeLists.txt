@@ -34,9 +34,9 @@ showProjectInfo(${OBJ_NAME})
 #     the library by users. when it is commented, system will using
 #     default libraries defined in module script.
 # ---------------------------------------------------
-#TODO#set(OPENCV_LIB_LIST_EX core imgproc highgui)
-#TODO#include(${VXL_TRUNK_DIR}/src/cmake/VxlCfgLibOpenCV.cmake)
-#TODO#include_directories(${OPENCV_INCLUDES})
+set(OPENCV_LIB_LIST_EX world)
+include(${VXL_TRUNK_DIR}/cmake/VxlCfgLibOpenCV3.cmake)
+include_directories(${OPENCV_INCLUDES})
 #TODO#link_directories(${OPENCV_LIB_DIR})
 
 #TODO#include(${VXL_TRUNK_DIR}/src/cmake/VxlCfgLibOpenCL.cmake)
@@ -115,9 +115,9 @@ add_library(${OBJ_NAME} SHARED ${SRC_LIST} ${VERSION_RC})
 #     the library (list) generated in STEP-3.
 # ---------------------------------------------------
 #TODO##generated libraries "OPENCV_LIBS_DBG" are only used with debug configuration
-#TODO#foreach(_lib ${OPENCV_LIBS_DBG})
-#TODO#    target_link_libraries(${OBJ_NAME} debug ${_lib})
-#TODO#endforeach()
+foreach(_lib ${OPENCV_LIBS_DBG})
+    target_link_libraries(${OBJ_NAME} debug ${_lib})
+endforeach()
 
 #TODO##generated libraries "OPENCV_LIBS_REL" are not used with no-debug configuration
 #TODO#foreach(_lib ${OPENCV_LIBS_REL})

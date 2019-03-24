@@ -30,24 +30,52 @@
 #       foreach(_lib ${OPENCV_LIBS_REL})
 #           target_link_libraries(${OBJ_NAME} optimized ${_lib})
 #       endforeach()
-
+#---------------------------------------------------------------------
+#   1.set basic configuration for the 3rd party library, it should be 
+#     modified as required
+#---------------------------------------------------------------------
+#set base directory, this path is offered to execute find_package command
 if(UNIX AND NOT APPLE)
     set(OPENCV3_PATH "D:/opencv343/opencv/build")
 elseif(WIN32)
-    if(NOT "${CMAKE_GENERATOR}" MATCHES "(Visual)")
+    if("${CMAKE_GENERATOR}" MATCHES "(Visual)")
         set(OPENCV3_PATH "D:/opencv343/opencv/build")
     else()
         set(OPENCV3_PATH "D:/opencv343/opencv/build")
     endif()
 endif()
 
+#check the existance of the folder
 if(EXISTS ${OPENCV3_PATH})
     message(STATUS "OPENCV3_PATH:" ${OPENCV3_PATH})
 else()
     message(FATAL_ERROR "ERROR:" ${OPENCV3_PATH} " not exist!!!")
 endif()
 
-find_package(OpenCV REQUIRED PATHS ${OPENCV3_PATH})
+#set required version
+set(OpenCV_REQUIRED_VERSION 3.4.3 CACHE STRING "" FORCE)
+#set other auxiliary variable 
+set(OpenCV_LIB_PREFIX "opencv_")
+
+#---------------------------------------------------------------------
+#   2.check the version of the library, it should be 
+#     modified as required
+#---------------------------------------------------------------------
+#list the used libraries and find the package
+if(DEFINED OPENCV_LIB_LIST_EX)
+    message(STATUS "Using user defined OPENCV_LIB_LIST")
+    set(OpenCV_LIB_LIST  ${OPENCV_LIB_LIST_EX} CACHE STRING "" FORCE)
+else()
+    message(STATUS "Using default OPENCV_LIB_LIST")
+    set(OpenCV_LIB_LIST  core imgproc highgui calib3d CACHE STRING "" FORCE)
+endif()
+find_package(OpenCV REQUIRED ${OpenCV_LIB_LIST} PATHS ${OPENCV3_PATH})
+
+if(OpenCV_REQUIRED_VERSION VERSION_EQUAL OpenCV_VERSION)
+    message(STATUS "OpenCV version ${OpenCV_VERSION}")
+else()
+    message(FATAL_ERROR "OpenCV version ${OpenCV_VERSION} is not expected")  
+endif()
 
 #      - OpenCV_LIBS                     : The list of libraries to link against.
 #      - OpenCV_INCLUDE_DIRS             : The OpenCV include directories.

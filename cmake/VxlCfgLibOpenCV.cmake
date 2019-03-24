@@ -37,7 +37,7 @@
 #---------------------------------------------------------------------
 #set base directory, this path is offered to execute find_package command
 if(WIN32)
-    set(OpenCV_DIR D:/opencv/gpu/install CACHE STRING "" FORCE)
+    set(OpenCV_DIR D:/opencv2.4.9/opencv/build CACHE STRING "" FORCE)
 elseif(UNIX)
     set(OpenCV_DIR /usr/local/share/OpenCV CACHE STRING "" FORCE)
 else()

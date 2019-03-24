@@ -51,7 +51,9 @@ VXL_EXECUTION_STATUS CDrawImg::Process()
     VXL_EXECUTION_STATUS status = VXL_FAILED;
 
     cout<<"image path is:"<<m_fileName.c_str()<<endl;
-
+    cv::Mat srcImg = cv::imread(m_fileName);
+    cv::imshow("example", srcImg);
+    cv::waitKey(30);
     status = VXL_SUCCESSED;
 finish:
 

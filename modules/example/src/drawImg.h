@@ -2,6 +2,8 @@
 #define _DRAWIMG_H_
 
 #include "IDrawImg.h"
+#include <opencv2/opencv.hpp>
+
 
 using namespace std;
 
