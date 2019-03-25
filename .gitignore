@@ -1,2 +1,4 @@
 /build/
 !/build/*.bat
+common/utility/vxlGitVersion.h
+common/interface/vxlCmakeCfg.h

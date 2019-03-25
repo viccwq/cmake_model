@@ -1,0 +1,22 @@
+#ifndef _VXLGITVERSION_H
+#define _VXLGITVERSION_H
+
+#ifndef _VERSION_
+#define _VERSION_ "GIT_VERSION"
+#endif
+
+#ifndef _AUTHOR_
+#define _AUTHOR_ "GIT_AUTHOR"
+#endif
+
+//commit time
+#ifndef _CI_TIME_
+#define _CI_TIME_ "GIT_CI_TIME"
+#endif
+
+//current time
+#ifndef _CR_TIME_
+#define _CR_TIME_ "GIT_CR_TIME"
+#endif
+
+#endif // _VXLGITVERSION_H
