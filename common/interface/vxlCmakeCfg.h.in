@@ -1,0 +1,7 @@
+#ifndef _VXLCMAKECFG_H_
+#define _VXLCMAKECFG_H_
+
+//define the path of the trunk
+#define VXL_TRUNK_DIR "@VXL_TRUNK_DIR@"
+
+#endif
