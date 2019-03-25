@@ -84,6 +84,9 @@ else()
 
 endif()
 
+#generate config file
+configure_file(${VXL_TRUNK_DIR}/common/interface/vxlCmakeCfg.h.in ${VXL_TRUNK_DIR}/common/interface/vxlCmakeCfg.h)
+
 ####get Project Director, it must be called in the CMakeList.txt which is in the
 ####folder "cmake" for a Project
 #input: _path               input the path of current CMakeLists.txt, 
