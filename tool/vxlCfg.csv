@@ -1,0 +1,4 @@
+VALS,WINDOWS,LINUX,UNIX
+GIT_PATH,D:/Program Files (x86)/Git/bin,/usr/bin,/usr/bin
+TEST_VAL1,0.1,0.2,3
+TEST_VAL2,55,6,43
