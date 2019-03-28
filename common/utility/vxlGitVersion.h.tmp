@@ -1,6 +1,9 @@
 #ifndef _VXLGITVERSION_H
 #define _VXLGITVERSION_H
 
+#define _STRINGLIZE(s) #s
+#define STRINGLIZE(s)  _STRINGLIZE(s)
+
 #ifndef _VERSION_
 #define _VERSION_ "GIT_VERSION"
 #endif
@@ -17,6 +20,43 @@
 //current time
 #ifndef _CR_TIME_
 #define _CR_TIME_ "GIT_CR_TIME"
+#endif
+
+
+//output define
+#ifndef COMPANY_NAME
+#define COMPANY_NAME        "Vision X Lab."
+#endif
+
+#ifndef FILE_DESC
+#define FILE_DESC           "Ver:"_VERSION_          \
+                            " Time:"_CI_TIME_        \
+                            " Auth:"_AUTHOR_
+#endif
+
+#ifndef FILE_VERSION
+#define FILE_VERSION        _VERSION_
+#endif
+
+#ifndef INTERNAL_NAME
+#define INTERNAL_NAME       "TODO: <Internal name>"
+#endif
+
+#ifndef COPYRIGHT
+#define COPYRIGHT           "Copyright (C) 2019"
+#endif
+
+#ifndef ORIG_FILE_NAME
+#define ORIG_FILE_NAME      "TODO: <Original filename>"
+#endif
+
+#ifndef PRODUCT_NAME
+#define PRODUCT_NAME        "TODO: <Product name>"
+#endif
+
+//get the git tag
+#ifndef PRODUCT_VERSION
+#define PRODUCT_VERSION     "TODO: <Product version>"
 #endif
 
 #endif // _VXLGITVERSION_H

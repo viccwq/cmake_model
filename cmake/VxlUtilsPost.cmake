@@ -187,6 +187,7 @@ macro(showSolutionInfo _solutionName)
     message(STATUS "PROJECT_SOURCE_DIR       = " ${PROJECT_SOURCE_DIR})
     message(STATUS "PROJECT_BINARY_DIR       = " ${PROJECT_BINARY_DIR})
     message(STATUS "CMAKE_CURRENT_SOURCE_DIR = " ${CMAKE_CURRENT_SOURCE_DIR})
+    message(STATUS "CMAKE_CURRENT_BINARY_DIR = " ${CMAKE_CURRENT_BINARY_DIR})
     message(STATUS "CMAKE_GENERATOR_PLATFORM = " ${CMAKE_GENERATOR_PLATFORM})     
     message(STATUS "CMAKE_C_FLAGS_DEBUG            = " ${CMAKE_C_FLAGS_DEBUG})
     message(STATUS "CMAKE_CXX_FLAGS_DEBUG          = " ${CMAKE_CXX_FLAGS_DEBUG})
@@ -206,6 +207,7 @@ macro(showProjectInfo _projectName)
     message(STATUS "VXL_TRUNK_DIR            = " ${VXL_TRUNK_DIR})
     message(STATUS "VXL_PROJECT_DIR          = " ${VXL_PROJECT_DIR})
     message(STATUS "CMAKE_CURRENT_SOURCE_DIR = " ${CMAKE_CURRENT_SOURCE_DIR})
+    message(STATUS "CMAKE_CURRENT_BINARY_DIR = " ${CMAKE_CURRENT_BINARY_DIR})
     message(STATUS "===========================================")
 endmacro()
 
@@ -217,6 +219,20 @@ macro(addProjDllExport _projectName)
     set(var "-D${var}_EXPORTS")
     add_definitions(${var})
     unset(var CACHE)
+endmacro()
+
+####add resource files that can generate the version for dll in windows
+#input: _obj_name  
+#input: _src_dir   the path including the resource.h and the xxxx.rc
+#input: _dst_dir   the path where the resource.h and the xxxx.rc file will be saved
+macro(addRcFiles _obj_name _src_dir _dst_dir)
+    message(STATUS ${_obj_name})
+    message(STATUS ${_src_dir})
+    message(STATUS ${_dst_dir})
+
+    configure_file(${_src_dir}/vxlGitVersion.h ${_dst_dir}/vxlGitVersion.h COPYONLY)
+    configure_file(${_src_dir}/resource.h.in ${_dst_dir}/resource.h COPYONLY)
+    configure_file(${_src_dir}/example.rc.in ${_dst_dir}/${_obj_name}.rc)
 endmacro()
 
 ####get the file list in specified path, including *.cpp|*.hpp|*.c|*.h|*.cl|*.clh

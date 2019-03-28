@@ -83,10 +83,11 @@ file(GLOB_RECURSE SRC_LIST
 #     as required, if the generated object should be publish with the
 #     version label, under code MUST be uncommented.
 # ---------------------------------------------------
-#TODO#set(VERSION_RC)
-#TODO#if (WIN32)
-#TODO#    set(VERSION_RC ${VXL_PROJECT_DIR}/rc/${OBJ_NAME}.rc)
-#TODO#endif()
+set(VERSION_RC)
+if (WIN32)
+    addRcFiles(${OBJ_NAME} ${VXL_TRUNK_DIR}/common/utility ${CMAKE_CURRENT_BINARY_DIR})
+    set(VERSION_RC ${CMAKE_CURRENT_BINARY_DIR}/${OBJ_NAME}.rc)
+endif()
 
 # ---------------------------------------------------
 #   8.build STATIC\SHARED library or executable object, it
