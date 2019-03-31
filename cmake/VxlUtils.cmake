@@ -1,14 +1,12 @@
 if(UNIX AND NOT APPLE)
     set(LINUX TRUE)
-endif()
-
-if(WIN32)
+elseif(WIN32)
     if(NOT "${CMAKE_GENERATOR}" MATCHES "(Win64|IA64)")
         set(WIN_X86 TRUE)
     else()
         set(WIN_X64 TRUE)
     endif()
-endif(WIN32)
+endif()
 
 if(CMAKE_CONFIGURATION_TYPES STREQUAL "Debug")
     set(BUILD_DEBUG TRUE)

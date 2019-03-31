@@ -29,9 +29,12 @@
 #endif
 
 #ifndef FILE_DESC
-#define FILE_DESC           "Ver:"_VERSION_          \
-                            " Time:"_CI_TIME_        \
-                            " Auth:"_AUTHOR_
+#define FILE_DESC           " Ver: "            \
+                            _VERSION_           \
+                            " Time: "           \
+                            _CI_TIME_           \
+                            " Auth: "           \
+                            _AUTHOR_
 #endif
 
 #ifndef FILE_VERSION
