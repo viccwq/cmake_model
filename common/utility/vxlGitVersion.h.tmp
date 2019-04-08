@@ -22,6 +22,30 @@
 #define _CR_TIME_ "GIT_CR_TIME"
 #endif
 
+//current tag
+#ifndef _CR_TAG_
+#define _CR_TAG_ "GIT_CR_TAG"
+#endif
+
+#ifndef _VER_STATS_
+#define _VER_STATS_ "GIT_VER_STATS"
+#endif
+
+#ifndef _VER_MAJOR_
+#define _VER_MAJOR_ GIT_VER_MAJOR
+#endif
+
+#ifndef _VER_MINOR_
+#define _VER_MINOR_ GIT_VER_MINOR
+#endif
+
+#ifndef _VER_PATCH_
+#define _VER_PATCH_ GIT_VER_PATCH
+#endif
+
+#ifndef _VER_REVIS_
+#define _VER_REVIS_ GIT_VER_REVIS
+#endif
 
 //output define
 #ifndef COMPANY_NAME
@@ -39,6 +63,10 @@
 
 #ifndef FILE_VERSION
 #define FILE_VERSION        _VERSION_
+#endif
+
+#ifndef FILE_VERSION_NUM
+#define FILE_VERSION_NUM    _VER_MAJOR_,_VER_MINOR_,_VER_PATCH_,_VER_REVIS_
 #endif
 
 #ifndef INTERNAL_NAME
@@ -62,4 +90,9 @@
 #define PRODUCT_VERSION     "TODO: <Product version>"
 #endif
 
+#ifndef PRODUCT_VERSION_NUM
+#define PRODUCT_VERSION_NUM  FILE_VERSION_NUM
+#endif
+
 #endif // _VXLGITVERSION_H
+
