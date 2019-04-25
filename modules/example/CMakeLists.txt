@@ -120,6 +120,10 @@ foreach(_lib ${OPENCV_LIBS_DBG})
     target_link_libraries(${OBJ_NAME} debug ${_lib})
 endforeach()
 
+foreach(_lib ${OPENCV_LIBS_REL})
+    target_link_libraries(${OBJ_NAME} optimized ${_lib})
+endforeach()
+
 #TODO##generated libraries "OPENCV_LIBS_REL" are not used with no-debug configuration
 #TODO#foreach(_lib ${OPENCV_LIBS_REL})
 #TODO#    target_link_libraries(${OBJ_NAME} optimized ${_lib})
