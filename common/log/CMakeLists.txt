@@ -66,7 +66,8 @@ include_directories(${VXL_PROJECT_DIR}/include)
 file(GLOB_RECURSE SRC_LIST
     "${VXL_PROJECT_DIR}/src/*.*"
     "${VXL_PROJECT_DIR}/include/*.*"
-    "${VXL_TRUNK_DIR}/common/utility/*.*")
+    "${VXL_TRUNK_DIR}/common/utility/*.cpp"
+    "${VXL_TRUNK_DIR}/common/utility/*.c")
 
 # ---------------------------------------------------
 #   6.add extra source files to current project, it MUST be

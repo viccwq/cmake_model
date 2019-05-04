@@ -67,7 +67,7 @@ endif()
 
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
     foreach(CompilerFlag ${CompilerFlags})
-        string(REPLACE "/MD" "/MT" ${CompilerFlag} "${${CompilerFlag}}")
+#        string(REPLACE "/MD" "/MT" ${CompilerFlag} "${${CompilerFlag}}")
     endforeach()
 endif()
 

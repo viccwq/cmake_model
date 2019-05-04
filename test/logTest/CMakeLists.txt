@@ -191,6 +191,7 @@ setTargetOutputDir(${OBJ_NAME}
     NULL
     NULL
     ${VXL_TRUNK_DIR}/build/install)
+set_target_properties(${OBJ_NAME} PROPERTIES FOLDER Tests)
 
 # ---------------------------------------------------
 #   12.set preBuild and postBuild event, it MUST be
