@@ -24,15 +24,7 @@
 #     modified as required
 #---------------------------------------------------------------------
 #set base directory, this path is offered to execute find_package command
-if(UNIX AND NOT APPLE)
-    set(DLIB_PATH "/usr/local/lib/cmake/dlib")
-elseif(WIN32)
-    if("${CMAKE_GENERATOR}" MATCHES "(Visual)")
-        set(DLIB_PATH "D:/dlib/install/lib/cmake/dlib")
-    else()
-        set(DLIB_PATH "/C/msys64/mingw64/lib/cmake/dlib")
-    endif()
-endif()
+include(${VXL_TRUNK_DIR}/cmake/VxlCfgVal.cmake)
 
 #check the existance of the folder
 if(EXISTS ${DLIB_PATH})
