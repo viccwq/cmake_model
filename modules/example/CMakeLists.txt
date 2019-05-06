@@ -34,7 +34,7 @@ showProjectInfo(${OBJ_NAME})
 #     the library by users. when it is commented, system will using
 #     default libraries defined in module script.
 # ---------------------------------------------------
-set(OPENCV_LIB_LIST_EX world)
+set(OPENCV_LIB_LIST_EX core imgproc highgui)
 include(${VXL_TRUNK_DIR}/cmake/VxlCfgLibOpenCV3.cmake)
 include_directories(${OPENCV_INCLUDES})
 #TODO#link_directories(${OPENCV_LIB_DIR})
@@ -84,7 +84,7 @@ file(GLOB_RECURSE SRC_LIST
 #     version label, under code MUST be uncommented.
 # ---------------------------------------------------
 set(VERSION_RC)
-if (WIN32)
+if (WIN32 AND IDE_VS)
     addRcFiles(${OBJ_NAME} ${VXL_TRUNK_DIR}/common/utility ${CMAKE_CURRENT_BINARY_DIR})
     set(VERSION_RC ${CMAKE_CURRENT_BINARY_DIR}/${OBJ_NAME}.rc)
 endif()
