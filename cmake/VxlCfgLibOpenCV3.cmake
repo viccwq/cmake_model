@@ -35,15 +35,7 @@
 #     modified as required
 #---------------------------------------------------------------------
 #set base directory, this path is offered to execute find_package command
-if(UNIX AND NOT APPLE)
-    set(OPENCV3_PATH "D:/opencv343/opencv/build")
-elseif(WIN32)
-    if("${CMAKE_GENERATOR}" MATCHES "(Visual)")
-        set(OPENCV3_PATH "D:/opencv343/opencv/build")
-    else()
-        set(OPENCV3_PATH "D:/opencv343/opencv/build")
-    endif()
-endif()
+include(${VXL_TRUNK_DIR}/cmake/VxlCfgVal.cmake)
 
 #check the existance of the folder
 if(EXISTS ${OPENCV3_PATH})
