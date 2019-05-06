@@ -1,0 +1,32 @@
+#this file is used to define the path for the 3rd part library
+if(1)
+    #linux
+    if(UNIX AND NOT APPLE)
+        set(OPENCV3_PATH "D:/opencv343/opencv/build")
+        set(DLIB_PATH "/usr/local/lib/cmake/dlib")
+    #in windows, with different compiler
+    elseif(WIN32)
+        if("${CMAKE_GENERATOR}" MATCHES "MSYS")
+            set(OPENCV3_PATH "C:/msys64/mingw64/share/OpenCV/lib")
+            set(DLIB_PATH "C:/msys64/mingw64/lib/cmake/dlib")
+        elseif("${CMAKE_GENERATOR}" MATCHES "Visual")
+            set(OPENCV3_PATH "D:/opencv343/opencv/build_v14")
+            set(DLIB_PATH "D:/dlib/install/lib/cmake/dlib")
+        endif()
+    endif()
+else()
+    #linux
+    if(UNIX AND NOT APPLE)
+        set(OPENCV3_PATH "D:/opencv343/opencv/build")
+        set(DLIB_PATH "/usr/local/lib/cmake/dlib")
+    #in windows, with different compiler
+    elseif(WIN32)
+        if("${CMAKE_GENERATOR}" MATCHES "MSYS")
+            set(OPENCV3_PATH "C:/msys64/mingw64/share/OpenCV/lib")
+            set(DLIB_PATH "C:/msys64/mingw64/lib/cmake/dlib")
+        elseif("${CMAKE_GENERATOR}" MATCHES "Visual")
+            set(OPENCV3_PATH "D:/opencv343/opencv/build_v14")
+            set(DLIB_PATH "D:/dlib/install/lib/cmake/dlib")
+        endif()
+    endif()
+endif()
