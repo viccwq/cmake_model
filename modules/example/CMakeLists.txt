@@ -53,7 +53,7 @@ include_directories(${OPENCV_INCLUDES})
 #     modified\added\removed as required
 # ---------------------------------------------------
 include_directories(${VXL_TRUNK_DIR}/common/interface)
-#TODO#include_directories(${VXL_TRUNK_DIR}/src/common/utils/src)
+#TODO#include_directories(${VXL_TRUNK_DIR}/common/utility)
 #TODO#include_directories(${VXL_TRUNK_DIR}/src/common/exception/src)
 #TODO#include_directories(${VXL_TRUNK_DIR}/src/common/logger/src)
 #TODO#include_directories(${VXL_TRUNK_DIR}/src/wrapper/openCV/src)

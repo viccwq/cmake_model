@@ -35,7 +35,7 @@ showProjectInfo(${OBJ_NAME})
 #     default libraries defined in module script.
 # ---------------------------------------------------
 #TODO#set(OPENCV_LIB_LIST_EX core imgproc highgui)
-#TODO#include(${VXL_TRUNK_DIR}/src/cmake/VxlCfgLibOpenCV.cmake)
+#TODO#include(${VXL_TRUNK_DIR}/cmake/VxlCfgLibOpenCV3.cmake)
 #TODO#include_directories(${OPENCV_INCLUDES})
 #TODO#link_directories(${OPENCV_LIB_DIR})
 
@@ -85,10 +85,11 @@ file(GLOB_RECURSE SRC_LIST
 #     as required, if the generated object should be publish with the
 #     version label, under code MUST be uncommented.
 # ---------------------------------------------------
-#TODO#set(VERSION_RC)
-#TODO#if (WIN32)
-#TODO#    set(VERSION_RC ${VXL_PROJECT_DIR}/rc/${OBJ_NAME}.rc)
-#TODO#endif()
+set(VERSION_RC)
+if (WIN32 AND IDE_VS)
+    addRcFiles(${OBJ_NAME} ${VXL_TRUNK_DIR}/common/utility ${CMAKE_CURRENT_BINARY_DIR})
+    set(VERSION_RC ${CMAKE_CURRENT_BINARY_DIR}/${OBJ_NAME}.rc)
+endif()
 
 # ---------------------------------------------------
 #   8.build STATIC\SHARED library or executable object, it
@@ -119,6 +120,10 @@ add_library(${OBJ_NAME} SHARED ${SRC_LIST} ${VERSION_RC})
 #TODO##generated libraries "OPENCV_LIBS_DBG" are only used with debug configuration
 #TODO#foreach(_lib ${OPENCV_LIBS_DBG})
 #TODO#    target_link_libraries(${OBJ_NAME} debug ${_lib})
+#TODO#endforeach()
+
+#TODO#foreach(_lib ${OPENCV_LIBS_REL})
+#TODO#    target_link_libraries(${OBJ_NAME} optimized ${_lib})
 #TODO#endforeach()
 
 #TODO##generated libraries "OPENCV_LIBS_REL" are not used with no-debug configuration

@@ -61,7 +61,7 @@ else()
     message(STATUS "Using default OPENCV_LIB_LIST")
     set(OpenCV_LIB_LIST  core imgproc highgui calib3d CACHE STRING "" FORCE)
 endif()
-find_package(OpenCV REQUIRED ${OpenCV_LIB_LIST} PATHS ${OPENCV3_PATH})
+find_package(OpenCV REQUIRED ${OpenCV_LIB_LIST} PATHS ${OPENCV3_PATH} NO_SYSTEM_ENVIRONMENT_PATH)
 
 if(OpenCV_REQUIRED_VERSION VERSION_EQUAL OpenCV_VERSION)
     message(STATUS "OpenCV version ${OpenCV_VERSION}")

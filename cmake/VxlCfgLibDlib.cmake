@@ -43,7 +43,7 @@ set(DLIB_LIB_PREFIX "opencv_")
 #     modified as required
 #---------------------------------------------------------------------
 #list the used libraries and find the package
-find_package(dlib REQUIRED PATHS ${DLIB_PATH})
+find_package(dlib REQUIRED PATHS ${DLIB_PATH} NO_SYSTEM_ENVIRONMENT_PATH)
 
 if(DLIB_REQUIRED_VERSION VERSION_EQUAL dlib_VERSION)
     message(STATUS "dlib version ${dlib_VERSION}")
